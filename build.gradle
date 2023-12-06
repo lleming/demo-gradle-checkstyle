@@ -1,0 +1,33 @@
+plugins {
+    id "org.barfuin.gradle.taskinfo" version "2.1.0"
+}
+subprojects {
+    apply plugin: 'checkstyle'
+    apply plugin: 'java'
+
+    group = 'org.example'
+    version = '1.0-SNAPSHOT'
+
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation(platform('org.junit:junit-bom:5.10.1'))
+        testImplementation('org.junit.jupiter:junit-jupiter')
+
+        checkstyle 'com.puppycrawl.tools:checkstyle:10.12.5'
+
+    }
+
+    checkstyle {
+        toolVersion = '10.12.5'
+        // configFile = rootProject.file('checkstyle.xml')
+        configDirectory = rootProject.projectDir
+    }
+
+    tasks.test {
+        useJUnitPlatform()
+    }
+}
