@@ -1,0 +1,3 @@
+rootProject.name = "SampleGradleCheckstyle"
+include "sample-app"
+include "sample-api"
